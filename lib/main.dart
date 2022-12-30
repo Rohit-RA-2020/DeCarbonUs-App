@@ -1,22 +1,28 @@
-import 'package:decarbonus/screens/login_screen.dart';
+import 'package:decarbonus/screens/welcome_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "DeCarbonUs",
-      theme: ThemeData(
-        useMaterial3: true,
-        primarySwatch: Colors.green,
-      ),
-      home: const LoginScreen(),
+    // var height = MediaQuery.of(context).size.height;
+    // var width = MediaQuery.of(context).size.width;
+    return ScreenUtilInit(
+      minTextAdapt: true,
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            fontFamily: 'Andika',
+          ),
+          home: child,
+        );
+      },
+      child: const WelcomePage(),
     );
   }
 }

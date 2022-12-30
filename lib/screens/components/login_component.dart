@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:decarbonus/screens/components/text_fields.dart';
 import 'package:decarbonus/screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';

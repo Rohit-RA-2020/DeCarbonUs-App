@@ -4,6 +4,7 @@ import 'package:decarbonus/screens/signup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../widgets/custom_auth_button.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -45,82 +46,44 @@ class _WelcomePageState extends State<WelcomePage> {
                 ),
                 Image.asset('assets/images/welcome.png'),
                 // Create two buttons
-                Padding(
-                  padding: EdgeInsets.fromLTRB(30.0.w, 8.0.h, 30.0.w, 8.0.h),
-                  child: SizedBox(
-                    width: 400.w,
-                    height: 50.h,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Navigate to the login page
-                        Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                            builder: (context) => const LogInPage(),
-                          ),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        splashFactory: NoSplash.splashFactory,
-                        elevation: 0,
-                        backgroundColor: const Color(0xFFfef4e8),
-                        side: const BorderSide(
-                          color: Colors.black,
-                          width: 1.5,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40.0),
-                        ),
+                CustomAuthButton(
+                  bgColor: const Color(0xFFfef4e8),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const LogInPage(),
                       ),
-                      child: const Text(
-                        'Log in',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+                    );
+                  },
+                  child: Text(
+                    'Log in',
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(30.0.w, 8.0.h, 30.0.w, 8.0.h),
-                  child: SizedBox(
-                    width: 300.w,
-                    height: 50.h,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                            builder: (context) => const SignUp(),
-                          ),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        splashFactory: NoSplash.splashFactory,
-                        elevation: 0,
-                        backgroundColor: kWelcomeColor,
-                        side: const BorderSide(
-                          color: Colors.black,
-                          width: 1.5,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40.0),
-                        ),
+                CustomAuthButton(
+                  bgColor: kWelcomeColor,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const SignUp(),
                       ),
-                      child: Text(
-                        'Sign up',
-                        style: TextStyle(
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
-                        ),
-                      ),
+                    );
+                  },
+                  child: Text(
+                    'Sign up',
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
-                // Create a button for team members
                 Padding(
                   padding: EdgeInsets.fromLTRB(30.0.w, 8.0.h, 30.0.w, 8.0.h),
                   child: Row(

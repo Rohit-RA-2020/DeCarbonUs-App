@@ -9,20 +9,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var height = MediaQuery.of(context).size.height;
-    // var width = MediaQuery.of(context).size.width;
     return ScreenUtilInit(
       minTextAdapt: true,
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            useMaterial3: true,
             fontFamily: 'Andika',
           ),
-          home: child,
+          home: const WelcomePage(),
         );
       },
-      child: const WelcomePage(),
     );
   }
 }

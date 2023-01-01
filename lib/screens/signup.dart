@@ -1,4 +1,5 @@
 import 'package:decarbonus/screens/login.dart';
+import 'package:decarbonus/widgets/custom_auth_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -166,78 +167,38 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(30.0.w, 15.0.h, 30.0.w, 8.0.h),
-                child: SizedBox(
-                  width: 400.w,
-                  height: 50.h,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Navigate to the login page
-                    },
-                    style: ElevatedButton.styleFrom(
-                      splashFactory: NoSplash.splashFactory,
-                      elevation: 0,
-                      backgroundColor: kSignUpColor,
-                      side: const BorderSide(
-                        color: Colors.black,
-                        width: 1.5,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(40.0),
-                      ),
-                    ),
-                    child: const Text(
-                      'Sign up',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+              CustomAuthButton(
+                onPressed: () {},
+                bgColor: kSignUpColor,
+                child: const Text(
+                  'Sign up',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
               const Text('Or continue with'),
-              Padding(
-                padding: EdgeInsets.fromLTRB(30.0.w, 8.0.h, 30.0.w, 8.0.h),
-                child: SizedBox(
-                  width: 400.w,
-                  height: 50.h,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Navigate to the login page
-                    },
-                    style: ElevatedButton.styleFrom(
-                      splashFactory: NoSplash.splashFactory,
-                      elevation: 0,
-                      backgroundColor: const Color(0xFFfffcf7),
-                      side: const BorderSide(
+              CustomAuthButton(
+                onPressed: () {},
+                bgColor: const Color(0xFFfffcf7),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/google_logo.png',
+                      width: 30.w,
+                    ),
+                    Text(
+                      'Sign Up With Google',
+                      style: TextStyle(
+                        fontSize: 20.sp,
                         color: Colors.black,
-                        width: 1.5,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(40.0),
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/images/google_logo.png',
-                          width: 30.w,
-                        ),
-                        Text(
-                          'Sign Up With Google',
-                          style: TextStyle(
-                            fontSize: 20.sp,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  ],
                 ),
               ),
               Padding(

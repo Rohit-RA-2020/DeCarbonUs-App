@@ -1,5 +1,6 @@
 import 'package:decarbonus/screens/signup.dart';
 import 'package:decarbonus/widgets/custom_auth_button.dart';
+import 'package:decarbonus/widgets/or_divider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -144,7 +145,7 @@ class _LogInPageState extends State<LogInPage> {
                   ),
                 ),
               ),
-              const Text('Or continue with'),
+              const OrDivider(color: Colors.black),
               CustomAuthButton(
                 onPressed: () {},
                 bgColor: const Color(0xFFECECEA),

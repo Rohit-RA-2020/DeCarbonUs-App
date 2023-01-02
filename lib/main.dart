@@ -1,4 +1,4 @@
-import 'package:decarbonus/screens/welcome_page.dart';
+import 'package:decarbonus/screens/onboarding/on_boarding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,10 +15,11 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            primarySwatch: Colors.teal,
             useMaterial3: true,
             fontFamily: 'Andika',
           ),
-          home: const WelcomePage(),
+          home: const OnboardingScreen(),
         );
       },
     );

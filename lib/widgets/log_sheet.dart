@@ -5,8 +5,8 @@ import 'package:lottie/lottie.dart';
 import '../providers/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MyBottomSheet extends ConsumerWidget {
-  const MyBottomSheet({super.key});
+class LogBottomSheet extends ConsumerWidget {
+  const LogBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -17,7 +17,7 @@ class MyBottomSheet extends ConsumerWidget {
           children: [
             ref.watch(isLoading)
                 ? const SpinKitDoubleBounce(
-                    color: Colors.teal,
+                    color: Color(0xFFe5d0bb),
                     size: 50.0,
                   )
                 : ref.watch(authToken) == 404
@@ -35,7 +35,7 @@ class MyBottomSheet extends ConsumerWidget {
                 ? const Padding(
                     padding: EdgeInsets.all(10.0),
                     child: Text(
-                      'Please wait while we are creating your account...',
+                      'Logging you in...',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 20,
@@ -58,7 +58,7 @@ class MyBottomSheet extends ConsumerWidget {
                         ),
                       )
                     : const Text(
-                        'Account created successfully!',
+                        'Logged in successfully!',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w600,

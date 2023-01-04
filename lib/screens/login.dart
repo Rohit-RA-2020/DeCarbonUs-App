@@ -1,10 +1,14 @@
 import 'package:decarbonus/screens/signup.dart';
 import 'package:decarbonus/widgets/custom_auth_button.dart';
+import 'package:decarbonus/widgets/log_sheet.dart';
 import 'package:decarbonus/widgets/or_divider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
+import '../auth/firebase_auth.dart';
 import '../constants/colors.dart';
 
 class LogInPage extends StatefulWidget {
@@ -133,17 +137,32 @@ class _LogInPageState extends State<LogInPage> {
                   ),
                 ),
               ),
-              CustomAuthButton(
-                onPressed: () {},
-                bgColor: kLogColor,
-                child: Text(
-                  'Log in',
-                  style: TextStyle(
-                    fontSize: 20.sp,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+              Consumer(
+                builder: ((context, ref, child) => CustomAuthButton(
+                      onPressed: () {
+                        showCupertinoModalBottomSheet(
+                          context: context,
+                          builder: (_) => SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.3,
+                            child: const LogBottomSheet(),
+                          ),
+                        );
+                        Auth().logIn(
+                          _emailController.text,
+                          _passwordController.text,
+                          ref,
+                        );
+                      },
+                      bgColor: kLogColor,
+                      child: Text(
+                        'Log in',
+                        style: TextStyle(
+                          fontSize: 20.sp,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    )),
               ),
               const OrDivider(color: Colors.black),
               CustomAuthButton(

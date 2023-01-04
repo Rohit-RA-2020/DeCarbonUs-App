@@ -1,16 +1,16 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/provider.dart';
 
 class Auth {
-  void signUp(BuildContext context, String email, String password, String name,
-      WidgetRef ref) {
+  void signUp(String email, String password, String name, WidgetRef ref) {
     FirebaseAuth auth = FirebaseAuth.instance;
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     ref.read(isLoading.notifier).state = true;
+    ref.read(authRes.notifier).state = 'waiting';
+    ref.read(authToken.notifier).state = 000;
 
     Future.delayed(const Duration(seconds: 1), () async {
       try {
@@ -22,10 +22,29 @@ class Auth {
           {'email': email, 'password': password, 'name': name},
         );
         ref.read(isLoading.notifier).state = false;
-      } catch (e) {
-        // ignore: avoid_print
-        print(e);
+      } on FirebaseAuthException catch (e) {
+        ref.read(isLoading.notifier).state = false;
+        ref.read(authRes.notifier).state = e.message.toString();
+        ref.read(authToken.notifier).state = 404;
       }
+    });
+  }
+
+  void logIn(String email, String password, WidgetRef ref) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    ref.read(isLoading.notifier).state = true;
+    Future.delayed(const Duration(seconds: 1), () async {
+      try {
+        await auth.signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+      } on FirebaseAuthException catch (e) {
+        ref.read(isLoading.notifier).state = false;
+        ref.read(authRes.notifier).state = e.message.toString();
+        ref.read(authToken.notifier).state = 404;
+      }
+      ref.read(isLoading.notifier).state = false;
     });
   }
 }

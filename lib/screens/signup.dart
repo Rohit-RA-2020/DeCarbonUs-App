@@ -182,7 +182,6 @@ class _SignUpState extends State<SignUp> {
                       ),
                     );
                     Auth().signUp(
-                      context,
                       _emailController.text,
                       _passwordController.text,
                       _nameController.text,

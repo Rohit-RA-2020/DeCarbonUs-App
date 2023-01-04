@@ -3,9 +3,12 @@ import 'package:decarbonus/widgets/custom_auth_button.dart';
 import 'package:decarbonus/widgets/or_divider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import '../auth/firebase_auth.dart';
 import '../constants/colors.dart';
+import '../widgets/reg_sheet.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -168,15 +171,35 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
               ),
-              CustomAuthButton(
-                onPressed: () {},
-                bgColor: kSignUpColor,
-                child: const Text(
-                  'Sign up',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600,
+              Consumer(
+                builder: (context, ref, child) => CustomAuthButton(
+                  onPressed: () {
+                    showCupertinoModalBottomSheet(
+                      context: context,
+                      builder: (_) => SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.3,
+                        child: const MyBottomSheet(),
+                      ),
+                    );
+                    Auth().signUp(
+                      context,
+                      _emailController.text,
+                      _passwordController.text,
+                      _nameController.text,
+                      ref,
+                    );
+                    _emailController.clear();
+                    _passwordController.clear();
+                    _nameController.clear();
+                  },
+                  bgColor: kSignUpColor,
+                  child: const Text(
+                    'Sign up',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),

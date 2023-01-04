@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "350949636849",
+    "firebase_url": "https://decarbonus-c1037-default-rtdb.firebaseio.com",
+    "project_id": "decarbonus-c1037",
+    "storage_bucket": "decarbonus-c1037.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350949636849:android:db177b342828a5d89d8750",
+        "android_client_info": {
+          "package_name": "com.example.dcu_web"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350949636849-1c875t5ss49do8t8mebhnv8c66vnbtkf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfiOruCkibU59Dx_Kr0g6D8ZTb8t3I1Pc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350949636849-1c875t5ss49do8t8mebhnv8c66vnbtkf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "350949636849-v0ng2l825v26l1b3dom23dpdk2khr0it.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.dcuWeb"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350949636849:android:ca44a01cde2b42bc9d8750",
+        "android_client_info": {
+          "package_name": "com.example.decarbonus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350949636849-1c875t5ss49do8t8mebhnv8c66vnbtkf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfiOruCkibU59Dx_Kr0g6D8ZTb8t3I1Pc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350949636849-1c875t5ss49do8t8mebhnv8c66vnbtkf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "350949636849-v0ng2l825v26l1b3dom23dpdk2khr0it.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.dcuWeb"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

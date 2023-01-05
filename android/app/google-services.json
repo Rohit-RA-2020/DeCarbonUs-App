@@ -32,10 +32,10 @@
               "client_type": 3
             },
             {
-              "client_id": "350949636849-v0ng2l825v26l1b3dom23dpdk2khr0it.apps.googleusercontent.com",
+              "client_id": "350949636849-8oj2bmm482t8109nlorqldems4evl621.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.dcuWeb"
+                "bundle_id": "com.example.decarbonus"
               }
             }
           ]
@@ -50,6 +50,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "350949636849-2h7go1a6pnp4v89hf067impftpmt19d3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.decarbonus",
+            "certificate_hash": "77c8befdc5b8f9449b3c9a827e6b5efc6e8cf077"
+          }
+        },
         {
           "client_id": "350949636849-1c875t5ss49do8t8mebhnv8c66vnbtkf.apps.googleusercontent.com",
           "client_type": 3
@@ -68,10 +76,10 @@
               "client_type": 3
             },
             {
-              "client_id": "350949636849-v0ng2l825v26l1b3dom23dpdk2khr0it.apps.googleusercontent.com",
+              "client_id": "350949636849-8oj2bmm482t8109nlorqldems4evl621.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.dcuWeb"
+                "bundle_id": "com.example.decarbonus"
               }
             }
           ]

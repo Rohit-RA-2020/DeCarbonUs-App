@@ -165,26 +165,37 @@ class _LogInPageState extends State<LogInPage> {
                     )),
               ),
               const OrDivider(color: Colors.black),
-              CustomAuthButton(
-                onPressed: () {},
-                bgColor: const Color(0xFFECECEA),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/images/google_logo.png',
-                      width: 30.w,
-                    ),
-                    Text(
-                      'Sign In With Google',
-                      style: TextStyle(
-                        fontSize: 20.sp,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
+              Consumer(
+                builder: ((context, ref, child) => CustomAuthButton(
+                      onPressed: () {
+                        Auth().googleLogin(ref);
+                        showCupertinoModalBottomSheet(
+                          context: context,
+                          builder: (_) => SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.3,
+                            child: const LogBottomSheet(),
+                          ),
+                        );
+                      },
+                      bgColor: const Color(0xFFECECEA),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/images/google_logo.png',
+                            width: 30.w,
+                          ),
+                          Text(
+                            'Sign In With Google',
+                            style: TextStyle(
+                              fontSize: 20.sp,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
+                    )),
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(30.0.w, 0.0, 30.0.w, 8.0.h),

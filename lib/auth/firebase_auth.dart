@@ -1,6 +1,9 @@
+// ignore_for_file: avoid_print
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/provider.dart';
 
@@ -9,8 +12,8 @@ class Auth {
     FirebaseAuth auth = FirebaseAuth.instance;
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     ref.read(isLoading.notifier).state = true;
-    ref.read(authRes.notifier).state = 'waiting';
-    ref.read(authToken.notifier).state = 000;
+    ref.refresh(authRes);
+    ref.refresh(authToken);
 
     Future.delayed(const Duration(seconds: 1), () async {
       try {
@@ -33,6 +36,8 @@ class Auth {
   void logIn(String email, String password, WidgetRef ref) async {
     FirebaseAuth auth = FirebaseAuth.instance;
     ref.read(isLoading.notifier).state = true;
+    ref.refresh(authRes);
+    ref.refresh(authToken);
     Future.delayed(const Duration(seconds: 1), () async {
       try {
         await auth.signInWithEmailAndPassword(
@@ -46,5 +51,33 @@ class Auth {
       }
       ref.read(isLoading.notifier).state = false;
     });
+  }
+
+  void googleLogin(WidgetRef ref) async {
+    final googleSignIn = GoogleSignIn();
+    ref.read(isLoading.notifier).state = true;
+    final googleUser = await googleSignIn.signIn();
+
+    if (googleUser == null) {
+      return null;
+    }
+
+    final googleAuth = await googleUser.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    try {
+      UserCredential user =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+      print(user.user!.email);
+      print(user.user!.displayName);
+      print(user.user!.uid);
+    } on FirebaseException catch (e) {
+      print(e);
+    }
+    ref.read(isLoading.notifier).state = false;
   }
 }

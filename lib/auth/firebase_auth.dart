@@ -1,5 +1,5 @@
 // ignore_for_file: avoid_print, unused_result
-import 'package:decarbonus/screens/welcome.dart';
+import 'package:decarbonus/screens/question_welcome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -24,14 +24,21 @@ class Auth {
           password: password,
         );
         await firestore.collection('users').doc(cred.user!.uid).set(
-          {'email': email, 'password': password, 'name': name},
+          {
+            'email': cred.user!.email,
+            'name': name,
+            'uid': cred.user!.uid,
+            'photo':
+                'https://firebasestorage.googleapis.com/v0/b/decarbonus-c1037.appspot.com/o/profile.png?alt=media&token=b7fb1269-59bd-4e66-b3f5-a5cd268d9840',
+            'responses': {},
+          },
         );
         ref.read(isLoading.notifier).state = false;
         Future.delayed(const Duration(seconds: 2), () {
           Navigator.pushReplacement(
             context,
             CupertinoPageRoute(
-              builder: (context) => const WelcomeScreen(),
+              builder: (context) => const QuestionWelcomeScreen(),
             ),
           );
         });
@@ -43,7 +50,8 @@ class Auth {
     });
   }
 
-  void logIn(String email, String password, WidgetRef ref, BuildContext context) async {
+  void logIn(String email, String password, WidgetRef ref,
+      BuildContext context) async {
     FirebaseAuth auth = FirebaseAuth.instance;
     ref.read(isLoading.notifier).state = true;
     ref.refresh(authRes);
@@ -54,11 +62,12 @@ class Auth {
           email: email,
           password: password,
         );
+        ref.read(isLoading.notifier).state = false;
         Future.delayed(const Duration(seconds: 2), () {
           Navigator.pushReplacement(
             context,
             CupertinoPageRoute(
-              builder: (context) => const WelcomeScreen(),
+              builder: (context) => const QuestionWelcomeScreen(),
             ),
           );
         });
@@ -71,8 +80,9 @@ class Auth {
     });
   }
 
-  void googleLogin(WidgetRef ref) async {
+  void googleLogin(WidgetRef ref, BuildContext context) async {
     final googleSignIn = GoogleSignIn();
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
     ref.read(isLoading.notifier).state = true;
     final googleUser = await googleSignIn.signIn();
 
@@ -90,11 +100,27 @@ class Auth {
     try {
       UserCredential user =
           await FirebaseAuth.instance.signInWithCredential(credential);
-      print(user.user!.email);
-      print(user.user!.displayName);
-      print(user.user!.uid);
+      await firestore.collection('users').doc(user.user!.uid).set(
+        {
+          'email': user.user!.email,
+          'name': user.user!.displayName,
+          'uid': user.user!.uid,
+          'photo': user.user!.photoURL,
+          'responses': {},
+        },
+      );
+      Future.delayed(const Duration(seconds: 2), () {
+        Navigator.pushReplacement(
+          context,
+          CupertinoPageRoute(
+            builder: (context) => const QuestionWelcomeScreen(),
+          ),
+        );
+      });
     } on FirebaseException catch (e) {
-      print(e);
+      ref.read(isLoading.notifier).state = false;
+      ref.read(authRes.notifier).state = e.message.toString();
+      ref.read(authToken.notifier).state = 404;
     }
     ref.read(isLoading.notifier).state = false;
   }

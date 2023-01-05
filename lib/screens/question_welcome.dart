@@ -3,14 +3,14 @@ import 'package:lottie/lottie.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_ripple_animation/simple_ripple_animation.dart';
 
-class WelcomeScreen extends StatefulWidget {
-  const WelcomeScreen({super.key});
+class QuestionWelcomeScreen extends StatefulWidget {
+  const QuestionWelcomeScreen({super.key});
 
   @override
-  State<WelcomeScreen> createState() => _WelcomeScreenState();
+  State<QuestionWelcomeScreen> createState() => _QuestionWelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _QuestionWelcomeScreenState extends State<QuestionWelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +55,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     elevation: 1,
-                    backgroundColor: Colors.greenAccent.shade200,
+                    backgroundColor: const Color.fromARGB(255, 78, 239, 167),
                     shape: const CircleBorder(),
                     padding: EdgeInsets.symmetric(
                       horizontal: 50.w,

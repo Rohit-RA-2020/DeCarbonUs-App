@@ -169,7 +169,7 @@ class _LogInPageState extends State<LogInPage> {
               Consumer(
                 builder: ((context, ref, child) => CustomAuthButton(
                       onPressed: () {
-                        Auth().googleLogin(ref);
+                        Auth().googleLogin(ref, context);
                         showCupertinoModalBottomSheet(
                           context: context,
                           builder: (_) => SizedBox(

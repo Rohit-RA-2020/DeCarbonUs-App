@@ -186,6 +186,7 @@ class _SignUpState extends State<SignUp> {
                       _passwordController.text,
                       _nameController.text,
                       ref,
+                      context,
                     );
                     _emailController.clear();
                     _passwordController.clear();

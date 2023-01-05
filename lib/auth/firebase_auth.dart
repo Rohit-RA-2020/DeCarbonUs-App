@@ -1,6 +1,7 @@
-// ignore_for_file: avoid_print
-
+// ignore_for_file: avoid_print, unused_result
+import 'package:decarbonus/screens/welcome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -8,7 +9,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/provider.dart';
 
 class Auth {
-  void signUp(String email, String password, String name, WidgetRef ref) {
+  void signUp(String email, String password, String name, WidgetRef ref,
+      BuildContext context) {
     FirebaseAuth auth = FirebaseAuth.instance;
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     ref.read(isLoading.notifier).state = true;
@@ -25,6 +27,14 @@ class Auth {
           {'email': email, 'password': password, 'name': name},
         );
         ref.read(isLoading.notifier).state = false;
+        Future.delayed(const Duration(seconds: 2), () {
+          Navigator.pushReplacement(
+            context,
+            CupertinoPageRoute(
+              builder: (context) => const WelcomeScreen(),
+            ),
+          );
+        });
       } on FirebaseAuthException catch (e) {
         ref.read(isLoading.notifier).state = false;
         ref.read(authRes.notifier).state = e.message.toString();
@@ -33,7 +43,7 @@ class Auth {
     });
   }
 
-  void logIn(String email, String password, WidgetRef ref) async {
+  void logIn(String email, String password, WidgetRef ref, BuildContext context) async {
     FirebaseAuth auth = FirebaseAuth.instance;
     ref.read(isLoading.notifier).state = true;
     ref.refresh(authRes);
@@ -44,6 +54,14 @@ class Auth {
           email: email,
           password: password,
         );
+        Future.delayed(const Duration(seconds: 2), () {
+          Navigator.pushReplacement(
+            context,
+            CupertinoPageRoute(
+              builder: (context) => const WelcomeScreen(),
+            ),
+          );
+        });
       } on FirebaseAuthException catch (e) {
         ref.read(isLoading.notifier).state = false;
         ref.read(authRes.notifier).state = e.message.toString();

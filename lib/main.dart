@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            scaffoldBackgroundColor: const Color(0xFFFEFBEA),
             primarySwatch: Colors.teal,
             useMaterial3: true,
             fontFamily: 'Andika',

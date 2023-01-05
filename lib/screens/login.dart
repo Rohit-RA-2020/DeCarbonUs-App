@@ -151,6 +151,7 @@ class _LogInPageState extends State<LogInPage> {
                           _emailController.text,
                           _passwordController.text,
                           ref,
+                          context,
                         );
                       },
                       bgColor: kLogColor,

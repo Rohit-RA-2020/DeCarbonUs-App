@@ -1,10 +1,7 @@
 // ignore_for_file: avoid_print
 import 'package:decarbonus/models/fade_animation.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../models/questions_model.dart';
 
 class Questions extends StatefulWidget {

@@ -20,7 +20,7 @@ const List questionsList = [
       'Regularly',
       'Never',
     ],
-    "icon": "assets/anim/ques/air_travel.json",
+    "icon": "assets/anim/ques/plane.json",
   },
   {
     "id": 2,
@@ -32,7 +32,7 @@ const List questionsList = [
       'Ocassionaly eat meat',
       'Regularly eat meat'
     ],
-    "icon": "assets/anim/ques/diet.json",
+    "icon": "assets/anim/ques/food.json",
   },
   {
     "id": 3,
@@ -77,7 +77,7 @@ const List questionsList = [
       'Three-bedroom',
       'Bunglow'
     ],
-    "icon": "assets/anim/ques/home.json"
+    "icon": "assets/anim/ques/house.json"
   },
   {
     "id": 7,
@@ -89,7 +89,7 @@ const List questionsList = [
       '4-6 people',
       ' > 7 people',
     ],
-    "icon": "assets/anim/ques/members.json"
+    "icon": "assets/anim/ques/people.json"
   },
   {
     "id": 8,
@@ -100,7 +100,7 @@ const List questionsList = [
       'Dog',
       'Other',
     ],
-    "icon": "assets/anim/ques/pet.json"
+    "icon": "assets/anim/ques/pets.json"
   },
   {
     "id": 9,
@@ -110,6 +110,6 @@ const List questionsList = [
       'Not Yet',
       'Not Sure',
     ],
-    "icon": "assets/anim/ques/renew_energy.json"
+    "icon": "assets/anim/ques/energy.json"
   },
 ];

@@ -130,27 +130,30 @@ class _QuestionWelcomeScreenState extends State<QuestionWelcomeScreen> {
                       child: RippleAnimation(
                         color: Colors.green.shade200,
                         repeat: true,
-                        child: ElevatedButton(
-                          onPressed: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Questions(),
+                        child: Hero(
+                          tag: 'next',
+                          child: ElevatedButton(
+                            onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Questions(),
+                              ),
                             ),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            elevation: 1,
-                            backgroundColor:
-                                const Color.fromARGB(255, 116, 228, 177),
-                            shape: const CircleBorder(),
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 40.w,
-                              vertical: 15.h,
+                            style: ElevatedButton.styleFrom(
+                              elevation: 1,
+                              backgroundColor:
+                                  const Color.fromARGB(255, 116, 228, 177),
+                              shape: const CircleBorder(),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 40.w,
+                                vertical: 15.h,
+                              ),
                             ),
-                          ),
-                          child: Icon(
-                            Icons.arrow_forward_ios,
-                            size: 30.sp,
-                            color: Colors.green.shade900,
+                            child: Icon(
+                              Icons.arrow_forward_ios,
+                              size: 30.sp,
+                              color: Colors.green.shade900,
+                            ),
                           ),
                         ),
                       ),

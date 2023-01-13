@@ -3,7 +3,6 @@ import 'package:decarbonus/models/fade_animation.dart';
 import 'package:decarbonus/providers/provider.dart';
 import 'package:decarbonus/utils/responses_calculate.dart';
 import 'package:decarbonus/widgets/responses_sheet.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lottie/lottie.dart';
@@ -32,9 +31,6 @@ class _QuestionsState extends State<Questions> {
     "7": null,
     "8": null,
   };
-  // final CollectionReference _collectionReference =
-  //     FirebaseFirestore.instance.collection('users');
-  // final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +107,6 @@ class _QuestionsState extends State<Questions> {
                         ),
                       );
                       calculateFootprint(responses, ref, context);
-                      print(responses);
                     },
                     shape: const StadiumBorder(
                         side: BorderSide(color: Colors.green, width: 3)),

@@ -1,4 +1,5 @@
 // ignore_for_file: avoid_print, unused_result
+import 'package:decarbonus/constants/links.dart';
 import 'package:decarbonus/screens/question_welcome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -28,9 +29,9 @@ class Auth {
             'email': cred.user!.email,
             'name': name,
             'uid': cred.user!.uid,
-            'photo':
-                'https://firebasestorage.googleapis.com/v0/b/decarbonus-c1037.appspot.com/o/profile.png?alt=media&token=b7fb1269-59bd-4e66-b3f5-a5cd268d9840',
+            'photo': profileImg,
             'responses': {},
+            'results': {},
           },
         );
         ref.read(isLoading.notifier).state = false;
@@ -84,9 +85,14 @@ class Auth {
     final googleSignIn = GoogleSignIn();
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     ref.read(isLoading.notifier).state = true;
+    ref.refresh(authRes);
+    ref.refresh(authToken);
     final googleUser = await googleSignIn.signIn();
 
     if (googleUser == null) {
+      ref.read(isLoading.notifier).state = false;
+      ref.read(authToken.notifier).state = 404;
+      ref.read(authRes.notifier).state = 'Google sign in failed';
       return null;
     }
 
@@ -100,15 +106,28 @@ class Auth {
     try {
       UserCredential user =
           await FirebaseAuth.instance.signInWithCredential(credential);
-      await firestore.collection('users').doc(user.user!.uid).set(
-        {
-          'email': user.user!.email,
-          'name': user.user!.displayName,
-          'uid': user.user!.uid,
-          'photo': user.user!.photoURL,
-          'responses': {},
-        },
-      );
+
+      if (user.additionalUserInfo!.isNewUser) {
+        await firestore.collection('users').doc(user.user!.uid).set(
+          {
+            'email': user.user!.email,
+            'name': user.user!.displayName,
+            'uid': user.user!.uid,
+            'photo': user.user!.photoURL,
+            'lastLogged': DateTime.now(),
+            'responses': {},
+            'results': {},
+            'isResponded': false,
+          },
+        );
+      } else {
+        await firestore.collection('users').doc(user.user!.uid).update(
+          {
+            'lastLogged': DateTime.now(),
+          },
+        );
+      }
+
       Future.delayed(const Duration(seconds: 2), () {
         Navigator.pushReplacement(
           context,

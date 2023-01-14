@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:decarbonus/models/fade_animation.dart';
 import 'package:decarbonus/screens/question_welcome.dart';
+import 'package:decarbonus/screens/welcome_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -56,6 +57,18 @@ class _DashBoardState extends State<DashBoard> {
             )
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          FirebaseAuth.instance.signOut();
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const WelcomePage(),
+            ),
+          );
+        },
+        child: const Icon(Icons.logout),
       ),
     );
   }

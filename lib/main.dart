@@ -1,4 +1,6 @@
+import 'package:decarbonus/screens/dashboard.dart';
 import 'package:decarbonus/screens/onboarding/on_boarding.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -33,7 +35,9 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
             fontFamily: 'Andika',
           ),
-          home: const OnboardingScreen(),
+          home: FirebaseAuth.instance.currentUser != null
+              ? const DashBoard()
+              : const OnboardingScreen(),
         );
       },
     );

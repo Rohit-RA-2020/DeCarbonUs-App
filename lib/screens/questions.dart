@@ -1,8 +1,10 @@
 // ignore_for_file: avoid_print
 import 'package:decarbonus/models/fade_animation.dart';
 import 'package:decarbonus/providers/provider.dart';
+import 'package:decarbonus/screens/responses_analysis.dart';
 import 'package:decarbonus/utils/responses_calculate.dart';
 import 'package:decarbonus/widgets/responses_sheet.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lottie/lottie.dart';

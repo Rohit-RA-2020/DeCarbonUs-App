@@ -23,19 +23,20 @@ void calculateFootprint(
       .whenComplete(
         () => {
           Future.delayed(
-            const Duration(seconds: 2),
+            const Duration(milliseconds: 1500),
             () {
               ref.read(isLoading.notifier).state = false;
             },
           ),
           Future.delayed(
-            const Duration(milliseconds: 3800),
+            const Duration(milliseconds: 2800),
             () {
-              Navigator.push(
+              Navigator.pushAndRemoveUntil(
                 context,
                 CupertinoPageRoute(
                   builder: (context) => const ResponsesAnalysis(),
                 ),
+                (route) => false,
               );
             },
           ),

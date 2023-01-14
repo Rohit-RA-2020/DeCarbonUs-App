@@ -1,4 +1,6 @@
 import 'package:decarbonus/providers/provider.dart';
+import 'package:decarbonus/screens/dashboard.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,6 +32,17 @@ class _ResponsesAnalysisState extends ConsumerState<ResponsesAnalysis> {
             Text(
               ref.watch(footprintResultProvider)['result'].toString(),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (context) => const DashBoard(),
+                  ),
+                );
+              },
+              child: const Text('Continue'),
+            )
           ],
         ),
       ),

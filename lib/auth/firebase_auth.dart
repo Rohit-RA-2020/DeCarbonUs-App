@@ -66,7 +66,7 @@ class Auth {
           email: email,
           password: password,
         );
-        await firestore.collection('users').doc(auth.currentUser!.uid).set(
+        await firestore.collection('users').doc(auth.currentUser!.uid).update(
           {
             'lastLogged': DateTime.now(),
           },

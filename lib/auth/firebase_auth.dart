@@ -32,6 +32,8 @@ class Auth {
             'photo': profileImg,
             'responses': {},
             'results': {},
+            'isResponded': false,
+            'lastLogged': DateTime.now(),
           },
         );
         ref.read(isLoading.notifier).state = false;
@@ -54,6 +56,7 @@ class Auth {
   void logIn(String email, String password, WidgetRef ref,
       BuildContext context) async {
     FirebaseAuth auth = FirebaseAuth.instance;
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
     ref.read(isLoading.notifier).state = true;
     ref.refresh(authRes);
     ref.refresh(authToken);
@@ -62,6 +65,11 @@ class Auth {
         await auth.signInWithEmailAndPassword(
           email: email,
           password: password,
+        );
+        await firestore.collection('users').doc(auth.currentUser!.uid).set(
+          {
+            'lastLogged': DateTime.now(),
+          },
         );
         ref.read(isLoading.notifier).state = false;
         Future.delayed(const Duration(seconds: 2), () {

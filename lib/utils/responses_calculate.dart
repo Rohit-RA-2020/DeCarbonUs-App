@@ -45,5 +45,6 @@ void calculateFootprint(
   collectionReference.doc(auth.currentUser!.uid).update({
     'responses': responses,
     'results': results.data,
+    'isResponded': true,
   });
 }

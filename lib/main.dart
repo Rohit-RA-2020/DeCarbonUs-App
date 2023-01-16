@@ -1,5 +1,5 @@
-import 'package:decarbonus/screens/dashboard.dart';
 import 'package:decarbonus/screens/onboarding/on_boarding.dart';
+import 'package:decarbonus/screens/question_welcome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
             fontFamily: 'Andika',
           ),
           home: FirebaseAuth.instance.currentUser != null
-              ? const DashBoard()
+              ? const QuestionWelcomeScreen()
               : const OnboardingScreen(),
         );
       },

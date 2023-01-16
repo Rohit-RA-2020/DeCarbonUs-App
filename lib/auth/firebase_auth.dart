@@ -34,8 +34,10 @@ class Auth {
             'results': {},
             'isResponded': false,
             'lastLogged': DateTime.now(),
+            'emailVerified': cred.user!.emailVerified,
           },
         );
+        cred.user!.sendEmailVerification();
         ref.read(isLoading.notifier).state = false;
         Future.delayed(const Duration(seconds: 2), () {
           Navigator.pushReplacement(
@@ -126,6 +128,7 @@ class Auth {
             'responses': {},
             'results': {},
             'isResponded': false,
+            'emailVerified': user.user!.emailVerified,
           },
         );
       } else {

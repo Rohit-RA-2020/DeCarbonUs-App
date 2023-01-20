@@ -19,14 +19,14 @@ class _DashBoardState extends State<DashBoard> {
       appBar: AppBar(
         title: const FadeAnimation(
           delay: 1.5,
-          fadeDirection: FadeDirection.left,
+          fadeDirection: FadeDirection.right,
           child: Text('Dashboard'),
         ),
         automaticallyImplyLeading: false,
       ),
       body: FadeAnimation(
         delay: 1.5,
-        fadeDirection: FadeDirection.bottom,
+        fadeDirection: FadeDirection.right,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

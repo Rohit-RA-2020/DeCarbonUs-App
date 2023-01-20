@@ -75,12 +75,12 @@ class Auth {
         );
         ref.read(isLoading.notifier).state = false;
         Future.delayed(const Duration(seconds: 2), () {
-          Navigator.pushReplacement(
-            context,
-            CupertinoPageRoute(
-              builder: (context) => const QuestionWelcomeScreen(),
-            ),
-          );
+          Navigator.pushAndRemoveUntil(
+              context,
+              CupertinoPageRoute(
+                builder: (context) => const QuestionWelcomeScreen(),
+              ),
+              (route) => false);
         });
       } on FirebaseAuthException catch (e) {
         ref.read(isLoading.notifier).state = false;

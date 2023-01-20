@@ -1,12 +1,14 @@
 import 'dart:async';
+import 'package:decarbonus/providers/provider.dart';
 import 'package:decarbonus/screens/onboarding/on_boarding.dart';
 import 'package:decarbonus/screens/question_welcome.dart';
+import 'package:decarbonus/widgets/no_connection.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lottie/lottie.dart';
 import 'package:simple_connection_checker/simple_connection_checker.dart';
 import 'firebase_options.dart';
 
@@ -22,17 +24,15 @@ void main() async {
   );
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends ConsumerStatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends ConsumerState<MyApp> {
   StreamSubscription? subscription;
-  bool? _connected;
-
   @override
   void initState() {
     super.initState();
@@ -40,9 +40,7 @@ class _MyAppState extends State<MyApp> {
       ..setLookUpAddress('pub.dev'); //Optional method to pass the lookup string
     subscription =
         simpleConnectionChecker.onConnectionChange.listen((connected) {
-      setState(() {
-        _connected = connected;
-      });
+      ref.read(connectionProvider.notifier).state = connected;
     });
   }
 
@@ -60,35 +58,21 @@ class _MyAppState extends State<MyApp> {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            appBarTheme: const AppBarTheme(
+              systemOverlayStyle: SystemUiOverlayStyle(
+                statusBarColor: Colors.transparent,
+                statusBarIconBrightness:
+                    Brightness.dark, // For Android (dark icons)
+                statusBarBrightness: Brightness.light, // For iOS (dark icons)
+              ),
+            ),
             scaffoldBackgroundColor: const Color(0xFFFEFBEA),
             primarySwatch: Colors.teal,
             useMaterial3: true,
             fontFamily: 'Andika',
           ),
-          home: _connected == false
-              ? Scaffold(
-                  body: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Lottie.asset(
-                          'assets/anim/nointernet.json',
-                          width: 300.w,
-                          height: 300.h,
-                        ),
-                        const Center(
-                          child: Text(
-                            'Check your internet connection!',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
+          home: ref.watch(connectionProvider) == false
+              ? const NoInternet()
               : FirebaseAuth.instance.currentUser != null
                   ? const QuestionWelcomeScreen()
                   : const OnboardingScreen(),

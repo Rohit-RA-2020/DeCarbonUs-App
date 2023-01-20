@@ -141,7 +141,7 @@ class _QuestionWelcomeScreenState extends State<QuestionWelcomeScreen> {
                             child: Hero(
                               tag: 'next',
                               child: ElevatedButton(
-                                onPressed: () => Navigator.pushReplacement(
+                                onPressed: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => const Questions(),

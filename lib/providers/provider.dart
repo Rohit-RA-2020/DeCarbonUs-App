@@ -6,3 +6,5 @@ final authToken = StateProvider((ref) => 0);
 final responses = StateProvider<Map<String, int>>((ref) => {});
 final footprintResultProvider =
     StateProvider<Map<String, dynamic>>((ref) => {});
+
+final connectionProvider = StateProvider((ref) => true);

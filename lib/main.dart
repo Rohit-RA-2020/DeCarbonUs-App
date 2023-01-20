@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:decarbonus/screens/onboarding/on_boarding.dart';
 import 'package:decarbonus/screens/question_welcome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -5,6 +6,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
+import 'package:simple_connection_checker/simple_connection_checker.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -19,8 +22,35 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  StreamSubscription? subscription;
+  bool? _connected;
+
+  @override
+  void initState() {
+    super.initState();
+    SimpleConnectionChecker simpleConnectionChecker = SimpleConnectionChecker()
+      ..setLookUpAddress('pub.dev'); //Optional method to pass the lookup string
+    subscription =
+        simpleConnectionChecker.onConnectionChange.listen((connected) {
+      setState(() {
+        _connected = connected;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    subscription?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +65,33 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
             fontFamily: 'Andika',
           ),
-          home: FirebaseAuth.instance.currentUser != null
-              ? const QuestionWelcomeScreen()
-              : const OnboardingScreen(),
+          home: _connected == false
+              ? Scaffold(
+                  body: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Lottie.asset(
+                          'assets/anim/nointernet.json',
+                          width: 300.w,
+                          height: 300.h,
+                        ),
+                        const Center(
+                          child: Text(
+                            'Check your internet connection!',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              : FirebaseAuth.instance.currentUser != null
+                  ? const QuestionWelcomeScreen()
+                  : const OnboardingScreen(),
         );
       },
     );

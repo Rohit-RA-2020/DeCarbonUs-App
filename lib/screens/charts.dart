@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:video_player/video_player.dart';
 import '../providers/provider.dart';
 
 class ChartsPage extends ConsumerStatefulWidget {
@@ -16,26 +15,6 @@ class ChartsPage extends ConsumerStatefulWidget {
 }
 
 class _ChartsPageState extends ConsumerState<ChartsPage> {
-  late VideoPlayerController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = VideoPlayerController.asset(
-      "assets/images/bg_vid.mp4",
-    )..initialize().then((_) {
-        _controller.setLooping(true);
-        _controller.play();
-        setState(() {});
-      });
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     final footprint = ref.read(footprintResultProvider);

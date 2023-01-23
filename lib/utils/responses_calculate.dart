@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:decarbonus/screens/charts.dart';
 import 'package:decarbonus/screens/responses_analysis.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -34,7 +35,7 @@ void calculateFootprint(
               Navigator.pushAndRemoveUntil(
                 context,
                 CupertinoPageRoute(
-                  builder: (context) => const ResponsesAnalysis(),
+                  builder: (context) => const ChartsPage(),
                 ),
                 (route) => false,
               );

@@ -139,7 +139,7 @@ class _QuestionsState extends ConsumerState<Questions> {
                       questionsList[questionIndex]['question'],
                       style: Theme.of(context)
                           .textTheme
-                          .headline5
+                          .headlineSmall
                           ?.copyWith(color: Colors.black),
                       textAlign: TextAlign.center,
                     ),

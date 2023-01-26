@@ -5,7 +5,6 @@ import 'package:decarbonus/widgets/responses_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lottie/lottie.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '../models/questions_model.dart';
 
 class Questions extends ConsumerStatefulWidget {
@@ -95,7 +94,7 @@ class _QuestionsState extends ConsumerState<Questions> {
                           backgroundColor: const Color(0xFF1DBF73),
                           onPressed: () async {
                             ref.watch(isLoading.notifier).state = true;
-                            showCupertinoModalBottomSheet(
+                            showModalBottomSheet(
                               isDismissible: false,
                               enableDrag: false,
                               context: context,

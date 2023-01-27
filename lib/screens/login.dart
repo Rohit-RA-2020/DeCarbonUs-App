@@ -6,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import '../auth/firebase_auth.dart';
 import '../constants/colors.dart';
@@ -140,7 +139,7 @@ class _LogInPageState extends State<LogInPage> {
               Consumer(
                 builder: ((context, ref, child) => CustomAuthButton(
                       onPressed: () {
-                        showCupertinoModalBottomSheet(
+                        showModalBottomSheet(
                           context: context,
                           builder: (_) => SizedBox(
                             height: MediaQuery.of(context).size.height * 0.3,
@@ -170,7 +169,7 @@ class _LogInPageState extends State<LogInPage> {
                 builder: ((context, ref, child) => CustomAuthButton(
                       onPressed: () {
                         Auth().googleLogin(ref, context);
-                        showCupertinoModalBottomSheet(
+                        showModalBottomSheet(
                           context: context,
                           builder: (_) => SizedBox(
                             height: MediaQuery.of(context).size.height * 0.3,

@@ -5,7 +5,6 @@ import 'package:decarbonus/widgets/responses_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lottie/lottie.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '../models/questions_model.dart';
 
 class Questions extends ConsumerStatefulWidget {
@@ -87,15 +86,21 @@ class _QuestionsState extends ConsumerState<Questions> {
                         },
                         shape: const StadiumBorder(
                             side: BorderSide(color: Colors.black, width: 3)),
-                        label: const Text('Next'),
-                        icon: const Icon(Icons.arrow_forward),
+                        label: const Text('Next',
+                            style: TextStyle(
+                              color: Colors.white,
+                            )),
+                        icon: const Icon(
+                          Icons.arrow_forward,
+                          color: Colors.white,
+                        ),
                       )
                     : Consumer(builder: (context, ref, child) {
                         return FloatingActionButton.extended(
                           backgroundColor: const Color(0xFF1DBF73),
                           onPressed: () async {
                             ref.watch(isLoading.notifier).state = true;
-                            showCupertinoModalBottomSheet(
+                            showModalBottomSheet(
                               isDismissible: false,
                               enableDrag: false,
                               context: context,
@@ -139,7 +144,7 @@ class _QuestionsState extends ConsumerState<Questions> {
                       questionsList[questionIndex]['question'],
                       style: Theme.of(context)
                           .textTheme
-                          .headline5
+                          .headlineSmall
                           ?.copyWith(color: Colors.black),
                       textAlign: TextAlign.center,
                     ),

@@ -12,7 +12,7 @@ import firebase_core
 import flutter_web_auth_2
 import isar_flutter_libs
 import package_info_plus
-import path_provider_macos
+import path_provider_foundation
 import sqflite
 import url_launcher_macos
 

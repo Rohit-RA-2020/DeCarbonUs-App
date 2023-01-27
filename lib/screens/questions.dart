@@ -86,8 +86,14 @@ class _QuestionsState extends ConsumerState<Questions> {
                         },
                         shape: const StadiumBorder(
                             side: BorderSide(color: Colors.black, width: 3)),
-                        label: const Text('Next'),
-                        icon: const Icon(Icons.arrow_forward),
+                        label: const Text('Next',
+                            style: TextStyle(
+                              color: Colors.white,
+                            )),
+                        icon: const Icon(
+                          Icons.arrow_forward,
+                          color: Colors.white,
+                        ),
                       )
                     : Consumer(builder: (context, ref, child) {
                         return FloatingActionButton.extended(

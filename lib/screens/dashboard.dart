@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'blogs.dart';
 import 'home.dart';
 import 'ngo_maps.dart';
-import 'profile.dart';
+import 'settings.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({super.key});
@@ -15,16 +15,23 @@ class DashBoard extends StatefulWidget {
 class _DashBoardState extends State<DashBoard> {
   int selectedPageIndex = 0;
 
+  final List<String> _pageTitles = ['Home', 'Local NGOs', 'Blogs', 'Settings'];
+
   final List<Widget> _pages = [
     const HomePage(),
     const NgoMaps(),
     const Blogs(),
-    const ProfilePage(),
+    const SettingsPage(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(_pageTitles[selectedPageIndex]),
+        backgroundColor: Colors.green.shade100,
+        elevation: 1,
+      ),
       body: _pages[selectedPageIndex],
       bottomNavigationBar: NavigationBar(
         animationDuration: const Duration(milliseconds: 500),

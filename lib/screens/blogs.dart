@@ -9,7 +9,6 @@ class Blogs extends StatelessWidget {
       child: Scaffold(
         body: Column(
           children: const [
-            Text('Blogs'),
             Padding(
               padding: EdgeInsets.all(8.0),
               child: Card(

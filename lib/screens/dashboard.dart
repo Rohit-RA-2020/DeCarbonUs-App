@@ -31,6 +31,7 @@ class _DashBoardState extends State<DashBoard> {
         title: Text(_pageTitles[selectedPageIndex]),
         backgroundColor: Colors.green.shade100,
         elevation: 1,
+        automaticallyImplyLeading: false,
       ),
       body: _pages[selectedPageIndex],
       bottomNavigationBar: NavigationBar(

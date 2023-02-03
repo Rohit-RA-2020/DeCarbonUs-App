@@ -289,7 +289,7 @@ class _ChartsPageState extends ConsumerState<ChartsPage> {
                   fadeDirection: FadeDirection.right,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         CupertinoPageRoute(
                           builder: (context) => const DashBoard(),

@@ -136,7 +136,7 @@ class _ChartsPageState extends ConsumerState<ChartsPage> {
                               x: 1,
                               barRods: [
                                 BarChartRodData(
-                                  toY: footprint['result'],
+                                  toY: footprint['result'].toDouble(),
                                   width: 15,
                                   color:
                                       const Color.fromARGB(255, 225, 139, 34),

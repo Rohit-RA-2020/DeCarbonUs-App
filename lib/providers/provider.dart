@@ -8,3 +8,4 @@ final footprintResultProvider =
     StateProvider<Map<String, dynamic>>((ref) => {});
 
 final connectionProvider = StateProvider((ref) => true);
+final statuscode = StateProvider((ref) => 0);

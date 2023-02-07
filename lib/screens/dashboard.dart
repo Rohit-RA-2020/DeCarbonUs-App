@@ -1,10 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:decarbonus/models/fade_animation.dart';
-import 'package:decarbonus/screens/question_welcome.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'welcome_page.dart';
+import 'blogs.dart';
+import 'home.dart';
+import 'ngo_maps.dart';
+import 'settings.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({super.key});
@@ -14,62 +13,58 @@ class DashBoard extends StatefulWidget {
 }
 
 class _DashBoardState extends State<DashBoard> {
+  int selectedPageIndex = 0;
+
+  final List<String> _pageTitles = ['Home', 'Local NGOs', 'Blogs', 'Settings'];
+
+  final List<Widget> _pages = [
+    const HomePage(),
+    const NgoMaps(),
+    const Blogs(),
+    const SettingsPage(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const FadeAnimation(
-          delay: 1.5,
-          fadeDirection: FadeDirection.right,
-          child: Text('Dashboard'),
-        ),
+        title: Text(_pageTitles[selectedPageIndex]),
+        backgroundColor: Colors.green.shade100,
+        elevation: 1,
         automaticallyImplyLeading: false,
       ),
-      body: FadeAnimation(
-        delay: 1.5,
-        fadeDirection: FadeDirection.right,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Center(
-              child: Text('Dashboard'),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.02,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                FirebaseFirestore.instance
-                    .collection('users')
-                    .doc(FirebaseAuth.instance.currentUser!.uid)
-                    .update({
-                  'isResponded': false,
-                  'responses': {},
-                  'results': {},
-                });
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const QuestionWelcomeScreen(),
-                  ),
-                );
-              },
-              child: const Text('Clear Responses'),
-            )
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          FirebaseAuth.instance.signOut();
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const WelcomePage(),
-            ),
-          );
+      body: _pages[selectedPageIndex],
+      bottomNavigationBar: NavigationBar(
+        animationDuration: const Duration(milliseconds: 500),
+        height: 75,
+        selectedIndex: selectedPageIndex,
+        onDestinationSelected: (int index) {
+          setState(() {
+            selectedPageIndex = index;
+          });
         },
-        child: const Icon(Icons.logout),
+        destinations: const <NavigationDestination>[
+          NavigationDestination(
+            selectedIcon: Icon(Icons.home),
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.location_on),
+            icon: Icon(Icons.location_on_outlined),
+            label: 'Local NGOs',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.book),
+            icon: Icon(Icons.book_outlined),
+            label: 'Blogs',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.person),
+            icon: Icon(Icons.person_outlined),
+            label: 'Profile',
+          ),
+        ],
       ),
     );
   }

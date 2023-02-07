@@ -114,8 +114,16 @@ class _QuestionsState extends ConsumerState<Questions> {
                           },
                           shape: const StadiumBorder(
                               side: BorderSide(color: Colors.green, width: 3)),
-                          label: const Text('Submit'),
-                          icon: const Icon(Icons.check),
+                          label: const Text(
+                            'Submit',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                          icon: const Icon(
+                            Icons.check,
+                            color: Colors.white,
+                          ),
                         );
                       }),
               ],

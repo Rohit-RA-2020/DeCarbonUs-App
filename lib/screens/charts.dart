@@ -148,7 +148,7 @@ class _ChartsPageState extends ConsumerState<ChartsPage> {
                               x: 1,
                               barRods: [
                                 BarChartRodData(
-                                  toY: footprint['result'],
+                                  toY: footprint['result'].toDouble(),
                                   width: 15,
                                   color:
                                       const Color.fromARGB(255, 225, 139, 34),
@@ -301,7 +301,7 @@ class _ChartsPageState extends ConsumerState<ChartsPage> {
                   fadeDirection: FadeDirection.right,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         CupertinoPageRoute(
                           builder: (context) => const DashBoard(),

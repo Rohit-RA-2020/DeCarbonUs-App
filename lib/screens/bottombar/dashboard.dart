@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'blogs.dart';
-import 'home.dart';
+import '../home.dart';
 import 'ngo_maps.dart';
 import 'settings.dart';
 

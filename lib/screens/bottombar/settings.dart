@@ -1,8 +1,8 @@
-import 'package:decarbonus/screens/welcome_page.dart';
+import 'package:decarbonus/screens/auth/welcome_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../constants/links.dart';
+import '../../constants/links.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});

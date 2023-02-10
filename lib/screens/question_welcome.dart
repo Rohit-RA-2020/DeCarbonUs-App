@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:decarbonus/models/fade_animation.dart';
-import 'package:decarbonus/screens/dashboard.dart';
+import 'package:decarbonus/screens/bottombar/dashboard.dart';
 import 'package:decarbonus/screens/questions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

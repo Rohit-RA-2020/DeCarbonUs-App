@@ -1,13 +1,13 @@
-import 'package:decarbonus/screens/login.dart';
+import 'package:decarbonus/screens/auth/login.dart';
 import 'package:decarbonus/widgets/custom_auth_button.dart';
 import 'package:decarbonus/widgets/or_divider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../auth/firebase_auth.dart';
-import '../constants/colors.dart';
-import '../widgets/reg_sheet.dart';
+import '../../auth/firebase_auth.dart';
+import '../../constants/colors.dart';
+import '../../widgets/reg_sheet.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});

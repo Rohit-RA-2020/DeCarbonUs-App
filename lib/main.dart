@@ -39,7 +39,7 @@ class _MyAppState extends ConsumerState<MyApp> {
   void initState() {
     super.initState();
     SimpleConnectionChecker simpleConnectionChecker = SimpleConnectionChecker()
-      ..setLookUpAddress('pub.dev'); //Optional method to pass the lookup string
+      ..setLookUpAddress('www.google.com'); //Optional method to pass the lookup string
     subscription =
         simpleConnectionChecker.onConnectionChange.listen((connected) {
       ref.read(connectionProvider.notifier).state = connected;

@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:decarbonus/models/fade_animation.dart';
-import 'package:decarbonus/screens/dashboard.dart';
+import 'package:decarbonus/screens/bottombar/dashboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';

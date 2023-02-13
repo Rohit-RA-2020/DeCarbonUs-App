@@ -1,10 +1,10 @@
 import 'package:decarbonus/constants/colors.dart';
-import 'package:decarbonus/screens/login.dart';
-import 'package:decarbonus/screens/signup.dart';
+import 'package:decarbonus/screens/auth/login.dart';
+import 'package:decarbonus/screens/auth/signup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../widgets/custom_auth_button.dart';
+import '../../widgets/custom_auth_button.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});

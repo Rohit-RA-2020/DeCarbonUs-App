@@ -1,4 +1,4 @@
-import 'package:decarbonus/screens/welcome_page.dart';
+import 'package:decarbonus/screens/auth/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'onboarding_contents.dart';
 import 'package:lottie/lottie.dart';

@@ -1,4 +1,4 @@
-import 'package:decarbonus/screens/signup.dart';
+import 'package:decarbonus/screens/auth/signup.dart';
 import 'package:decarbonus/widgets/custom_auth_button.dart';
 import 'package:decarbonus/widgets/log_sheet.dart';
 import 'package:decarbonus/widgets/or_divider.dart';
@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../auth/firebase_auth.dart';
-import '../constants/colors.dart';
+import '../../auth/firebase_auth.dart';
+import '../../constants/colors.dart';
 
 class LogInPage extends StatefulWidget {
   const LogInPage({super.key});

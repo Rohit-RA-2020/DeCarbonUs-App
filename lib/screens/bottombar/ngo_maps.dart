@@ -22,12 +22,15 @@ class _NgoMapsState extends State<NgoMaps> {
         zoom: 12.0,
       )));
       setState(() {
-        _markers.add(Marker(
+        _markers.add(
+          Marker(
             draggable: true,
             flat: true,
             infoWindow: const InfoWindow(title: 'Your Current Location'),
             markerId: const MarkerId('Home'),
-            position: LatLng(loc.latitude ?? 0.0, loc.longitude ?? 0.0)));
+            position: LatLng(loc.latitude ?? 0.0, loc.longitude ?? 0.0),
+          ),
+        );
       });
     });
   }

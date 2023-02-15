@@ -75,7 +75,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 Icons.delete_outline,
                 color: isEmailVerified ? Colors.green : null,
               ),
-              title: Text("Clear response"),
+              title: const Text("Clear response"),
               onTap: () {
                 FirebaseFirestore.instance
                     .collection('users')

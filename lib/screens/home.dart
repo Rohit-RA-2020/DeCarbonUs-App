@@ -29,9 +29,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             children: [
               Container(
                 height: MediaQuery.of(context).size.height * 0.55,
-                decoration: BoxDecoration(
-                  color: Colors.teal.shade200,
-                ),
+                decoration: BoxDecoration(color: Colors.grey),
                 child: SfCircularChart(series: <CircularSeries>[
                   // Renders radial bar chart
                   RadialBarSeries<ChartData, String>(

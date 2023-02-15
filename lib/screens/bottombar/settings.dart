@@ -17,6 +17,8 @@ class _SettingsPageState extends State<SettingsPage> {
   late FirebaseAuth auth;
   late bool isEmailVerified;
 
+  bool isSwitched = false;
+
   @override
   void initState() {
     auth = FirebaseAuth.instance;
@@ -41,6 +43,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             const Divider(),
             ListTile(
+              contentPadding: const EdgeInsets.symmetric(horizontal: 8),
               leading: CircleAvatar(
                 backgroundImage: NetworkImage(
                   auth.currentUser!.photoURL ?? profileImg,
@@ -103,9 +106,11 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             const Divider(),
             SwitchListTile(
-              value: true,
+              value: isSwitched,
               onChanged: (value) {
-                // toggle notification value
+                setState(() {
+                  isSwitched = value;
+                });
               },
               title: const Text('Receive notifications'),
             ),

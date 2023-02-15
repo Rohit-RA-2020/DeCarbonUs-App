@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../providers/provider.dart';
 
@@ -12,18 +13,28 @@ class Blogs extends ConsumerWidget {
     final blogs = ref.watch(blogsProvider);
     return SafeArea(
       child: Scaffold(
-        body: ListView.builder(
-          itemCount: blogs.length,
-          itemBuilder: (context, index) {
-            return BlogPage(
-              title: blogs[index].title,
-              description: blogs[index].desc,
-              image: blogs[index].image,
-              author: blogs[index].author,
-              link: blogs[index].link,
-            );
-          },
-        ),
+        body: blogs.isEmpty
+            ? Center(
+                child: Text(
+                  'Cannot load blogs',
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              )
+            : ListView.builder(
+                itemCount: blogs.length,
+                itemBuilder: (context, index) {
+                  return BlogPage(
+                    title: blogs[index].title,
+                    description: blogs[index].desc,
+                    image: blogs[index].image,
+                    author: blogs[index].author,
+                    link: blogs[index].link,
+                  );
+                },
+              ),
       ),
     );
   }

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChartsPage extends ConsumerStatefulWidget {
   const ChartsPage({super.key});
@@ -33,19 +34,19 @@ class _ChartsPageState extends ConsumerState<ChartsPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const FadeAnimation(
+                FadeAnimation(
                   delay: 0.2,
                   fadeDirection: FadeDirection.right,
                   child: Padding(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                         top: 50, bottom: 20, left: 10, right: 10),
                     child: Text(
                       "Your annual carbon emission is",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontFamily: 'Andika',
-                        fontSize: 25,
-                        color: Color(0xFFFFB703),
+                        fontSize: 20.sp,
+                        color: const Color(0xFFFFB703),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -54,14 +55,25 @@ class _ChartsPageState extends ConsumerState<ChartsPage> {
                 FadeAnimation(
                   delay: 0.7,
                   fadeDirection: FadeDirection.right,
-                  child: Text(
-                    "${footprint['result']}*",
-                    style: const TextStyle(
-                      fontSize: 50,
-                      color: Colors.white,
-                      fontFamily: 'Andika',
-                      fontWeight: FontWeight.bold,
-                    ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "${footprint['result']}",
+                        style: TextStyle(
+                          fontSize: 55.sp,
+                          color: Colors.white,
+                          fontFamily: 'Andika',
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.info_outline),
+                        onPressed: () {},
+                        color: Colors.white,
+                        iconSize: 25.sp,
+                      ),
+                    ],
                   ),
                 ),
                 const FadeAnimation(
@@ -83,7 +95,7 @@ class _ChartsPageState extends ConsumerState<ChartsPage> {
                   fadeDirection: FadeDirection.right,
                   child: Container(
                     margin: const EdgeInsets.only(
-                        left: 25, right: 25, top: 10, bottom: 10),
+                        left: 25, right: 50, top: 10, bottom: 10),
                     height: MediaQuery.of(context).size.height * 0.2,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 50,
@@ -170,16 +182,16 @@ class _ChartsPageState extends ConsumerState<ChartsPage> {
                     ),
                     child: Column(
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.only(bottom: 50.0),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 50.0),
                           child: Text(
                             "Your Main Sources of Carbon Emission are",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontFamily: 'Andika',
                               fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: Color(0xFFFFB703),
+                              fontSize: 18.sp,
+                              color: const Color(0xFFFFB703),
                             ),
                           ),
                         ),

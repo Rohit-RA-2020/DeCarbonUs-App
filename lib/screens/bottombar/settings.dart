@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:decarbonus/screens/auth/welcome_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/links.dart';
+import '../question_welcome.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -67,6 +69,29 @@ class _SettingsPageState extends State<SettingsPage> {
                             ),
                           );
                     },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.delete_outline,
+                color: isEmailVerified ? Colors.green : null,
+              ),
+              title: Text("Clear response"),
+              onTap: () {
+                FirebaseFirestore.instance
+                    .collection('users')
+                    .doc(FirebaseAuth.instance.currentUser!.uid)
+                    .update({
+                  'isResponded': false,
+                  'responses': {},
+                  'results': {},
+                });
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const QuestionWelcomeScreen(),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 20),
             const Text(

@@ -29,9 +29,8 @@ class _HomePageState extends ConsumerState<HomePage> {
             children: [
               Container(
                 height: MediaQuery.of(context).size.height * 0.4.sp,
-                decoration: BoxDecoration(
-                  color: Colors.green.shade50,
-                  borderRadius: const BorderRadius.only(
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(25),
                     bottomRight: Radius.circular(25),
                   ),
@@ -40,8 +39,13 @@ class _HomePageState extends ConsumerState<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     SfCircularChart(
+                      palette: const <Color>[
+                        Colors.green,
+                        Colors.lightGreen,
+                        Colors.greenAccent,
+                        Colors.lightGreenAccent,
+                      ],
                       series: <CircularSeries>[
-                        // Renders radial bar chart
                         RadialBarSeries<ChartData, String>(
                             useSeriesColor: true,
                             radius: '120',
@@ -124,7 +128,9 @@ class _HomePageState extends ConsumerState<HomePage> {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  print("Rowdy baby");
+                },
                 child: Text(
                   "Start Off-setting",
                   style: TextStyle(

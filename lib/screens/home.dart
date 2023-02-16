@@ -1,3 +1,4 @@
+import 'package:decarbonus/utils/get_blogs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -12,6 +13,12 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
+  @override
+  void initState() {
+    getBlogs(ref, context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<ChartData> chartData = [
@@ -59,29 +66,23 @@ class _HomePageState extends ConsumerState<HomePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Container(
-                          child: Column(
-                            children: [
-                              Text("data"),
-                              Text("56"),
-                            ],
-                          ),
+                        Column(
+                          children: const [
+                            Text("data"),
+                            Text("56"),
+                          ],
                         ),
-                        Container(
-                          child: Column(
-                            children: [
-                              Text("data"),
-                              Text("56"),
-                            ],
-                          ),
+                        Column(
+                          children: const [
+                            Text("data"),
+                            Text("56"),
+                          ],
                         ),
-                        Container(
-                          child: Column(
-                            children: [
-                              Text("data"),
-                              Text("56"),
-                            ],
-                          ),
+                        Column(
+                          children: const [
+                            Text("data"),
+                            Text("56"),
+                          ],
                         ),
                       ],
                     ),
@@ -91,7 +92,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               SizedBox(
                 height: 10.sp,
               ),
-              Text(
+              const Text(
                 "Tracks",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
               ),
@@ -105,7 +106,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                     Radius.circular(40.sp),
                   ),
                 ),
-                child: Center(child: Text("Daily Activity")),
+                child: const Center(child: Text("Daily Activity")),
               ),
               Container(
                 margin: EdgeInsets.all(10.sp),
@@ -117,7 +118,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                     Radius.circular(40.sp),
                   ),
                 ),
-                child: Center(child: Text("Daily Activity")),
+                child: const Center(child: Text("Daily Activity")),
               ),
               SizedBox(
                 height: 35.sp,

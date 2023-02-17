@@ -15,7 +15,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Projects"),
+        title: const Text("Projects"),
         backgroundColor: Colors.green.shade100,
         elevation: 1,
         actions: [
@@ -28,7 +28,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
                 ),
               );
             },
-            child: Text("Skip"),
+            child: const Text("Skip"),
           ),
         ],
       ),
@@ -48,7 +48,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
             SizedBox(
               height: 20.sp,
             ),
-            Text(
+            const Text(
               "Which carbon-offset initiatives hold significance for you?",
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -67,7 +67,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.15.sp,
                     width: MediaQuery.of(context).size.width * 0.30.sp,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.pink,
                       borderRadius: BorderRadius.all(
                         Radius.circular(10),
@@ -83,7 +83,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.15.sp,
                     width: MediaQuery.of(context).size.width * 0.30.sp,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.pink,
                       borderRadius: BorderRadius.all(
                         Radius.circular(10),
@@ -104,7 +104,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.15.sp,
                     width: MediaQuery.of(context).size.width * 0.30.sp,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.pink,
                       borderRadius: BorderRadius.all(
                         Radius.circular(10),
@@ -120,7 +120,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.15.sp,
                     width: MediaQuery.of(context).size.width * 0.30.sp,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.pink,
                       borderRadius: BorderRadius.all(
                         Radius.circular(10),
@@ -133,7 +133,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
             SizedBox(
               height: 50.sp,
             ),
-            Text(
+            const Text(
               "How is this used?",
               style: TextStyle(
                 color: Colors.grey,
@@ -142,7 +142,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
             SizedBox(
               height: 20.sp,
             ),
-            Text(
+            const Text(
               "The opinions and perspectives of the DeCarbonUs community hold great value for us.\n We take into account the preferences of our community when evaluating new initiatives.",
               textAlign: TextAlign.center,
               style: TextStyle(

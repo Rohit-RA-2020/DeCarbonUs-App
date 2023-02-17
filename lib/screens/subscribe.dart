@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SubscribePage extends StatefulWidget {
@@ -18,7 +17,7 @@ class _SubscribePageState extends State<SubscribePage> {
         elevation: 1,
       ),
       body: Container(
-        margin: EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
         child: ListView(
           children: [
             Text(
@@ -33,17 +32,17 @@ class _SubscribePageState extends State<SubscribePage> {
               height: 30.sp,
             ),
             Container(
-              padding: EdgeInsets.all(15),
+              padding: const EdgeInsets.all(15),
               height: MediaQuery.of(context).size.height * 0.6,
               decoration: BoxDecoration(
                 color: Colors.green.shade50,
-                borderRadius: BorderRadius.all(
+                borderRadius: const BorderRadius.all(
                   Radius.circular(25),
                 ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
+                children: const [
                   Text(
                     "I want to offset...",
                     style: TextStyle(

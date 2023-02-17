@@ -29,7 +29,7 @@ class Auth {
             'email': cred.user!.email,
             'name': name,
             'uid': cred.user!.uid,
-            'photo': profileImg,
+            'photo': profileImg, 
             'responses': {},
             'results': {},
             'isResponded': false,

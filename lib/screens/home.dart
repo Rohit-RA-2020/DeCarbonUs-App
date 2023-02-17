@@ -1,4 +1,6 @@
+import 'package:decarbonus/screens/projects.dart';
 import 'package:decarbonus/utils/get_blogs.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -130,7 +132,12 @@ class _HomePageState extends ConsumerState<HomePage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  print("Rowdy baby");
+                  Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          builder: (context) => const ProjectsScreen(),
+                        ),
+                      );
                 },
                 child: Text(
                   "Start Off-setting",

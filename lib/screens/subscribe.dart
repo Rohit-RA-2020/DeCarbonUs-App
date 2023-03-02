@@ -86,7 +86,8 @@ class _SubscribePageState extends State<SubscribePage> {
                   ListView.builder(
                     shrinkWrap: true,
                     itemCount: 4,
-                    itemBuilder: (contex, index) => Container(
+                    itemBuilder: (contex, index) => AnimatedContainer(
+                      duration: const Duration(milliseconds: 500),
                       margin: const EdgeInsets.symmetric(vertical: 10),
                       decoration: BoxDecoration(
                         color: _selectedIndex == index

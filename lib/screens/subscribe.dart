@@ -8,10 +8,39 @@ class SubscribePage extends StatefulWidget {
   State<SubscribePage> createState() => _SubscribePageState();
 }
 
-enum SingingCharacter { lafayette, jefferson }
+var options = [
+  OffSetOptions.n100,
+  OffSetOptions.n120,
+  OffSetOptions.n200,
+  OffSetOptions.custom,
+];
+
+enum OffSetOptions { n100, n120, n200, custom }
 
 class _SubscribePageState extends State<SubscribePage> {
-  SingingCharacter? _character = SingingCharacter.lafayette;
+  OffSetOptions _option = OffSetOptions.n100;
+
+  int _selectedIndex = 0;
+
+  var packages = [
+    {
+      "title": "100% of my footprint",
+      "price": "Rs 400/month",
+    },
+    {
+      "title": "120% of my footprint",
+      "price": "Rs 500/month",
+    },
+    {
+      "title": "200% of my footprint",
+      "price": "Rs 800/month",
+    },
+    {
+      "title": "Custom",
+      "price": "",
+    }
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,91 +82,57 @@ class _SubscribePageState extends State<SubscribePage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  OptionWidget(
-                    character: _character,
-                    rupees: "Rs 400/month",
-                    text: "100% of my footprint",
-                  ),
-                  OptionWidget(
-                    character: _character,
-                    rupees: "Rs 500/month",
-                    text: "120% of my footprint",
-                  ),
-                  OptionWidget(
-                    character: _character,
-                    rupees: "Rs 800/month",
-                    text: "200% of my footprint",
-                  ),
-                  OptionWidget(
-                    character: _character,
-                    rupees: "",
-                    text: "Custom",
-                  ),
+                  const SizedBox(height: 50),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 4,
+                    itemBuilder: (contex, index) => Container(
+                      margin: const EdgeInsets.symmetric(vertical: 10),
+                      decoration: BoxDecoration(
+                        color: _selectedIndex == index
+                            ? Colors.yellow
+                            : Colors.white,
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(18),
+                        ),
+                        border: const Border(
+                          bottom: BorderSide(
+                            color: Colors.green,
+                          ),
+                          top: BorderSide(
+                            color: Colors.green,
+                          ),
+                          left: BorderSide(
+                            color: Colors.green,
+                          ),
+                          right: BorderSide(
+                            color: Colors.green,
+                          ),
+                        ),
+                      ),
+                      child: ListTile(
+                        onTap: () {},
+                        contentPadding: const EdgeInsets.all(8),
+                        tileColor: Colors.white,
+                        trailing: Text(packages[index]["price"]!),
+                        title: Text(packages[index]["title"]!),
+                        leading: Radio<OffSetOptions>(
+                          value: options[index],
+                          groupValue: _option,
+                          onChanged: (OffSetOptions? value) {
+                            setState(() {
+                              _selectedIndex = index;
+                              _option = value!;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class OptionWidget extends StatelessWidget {
-  final String text;
-  final String rupees;
-  const OptionWidget({
-    super.key,
-    required SingingCharacter? character,
-    required this.text,
-    required this.rupees,
-  }) : _character = character;
-
-  final SingingCharacter? _character;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(
-          Radius.circular(18),
-        ),
-        border: Border(
-          bottom: BorderSide(
-            color: Colors.green,
-          ),
-          top: BorderSide(
-            color: Colors.green,
-          ),
-          left: BorderSide(
-            color: Colors.green,
-          ),
-          right: BorderSide(
-            color: Colors.green,
-          ),
-        ),
-      ),
-      child: ListTile(
-        onTap: () {},
-        contentPadding: const EdgeInsets.all(8),
-        tileColor: Colors.white,
-        trailing: Text(rupees),
-        title: Text(text),
-        leading: Radio<SingingCharacter>(
-          activeColor: Colors.green,
-          toggleable: true,
-          value: SingingCharacter.lafayette,
-          groupValue: _character,
-          onChanged: (SingingCharacter? value) {
-            // setState(() {
-            //   _character = value;
-            // });
-          },
         ),
       ),
     );

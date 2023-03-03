@@ -1,3 +1,5 @@
+import 'package:decarbonus/screens/payment.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -65,24 +67,24 @@ class _SubscribePageState extends State<SubscribePage> {
             ),
             Container(
               padding: const EdgeInsets.all(15),
-              height: MediaQuery.of(context).size.height * 0.6,
+              height: MediaQuery.of(context).size.height * 0.5.sp,
               decoration: BoxDecoration(
                 color: Colors.green.shade50,
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(25),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(25.sp),
                 ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text(
+                  Text(
                     "I want to offset...",
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 50),
+                  SizedBox(height: 50.sp),
                   ListView.builder(
                     shrinkWrap: true,
                     itemCount: 4,
@@ -90,34 +92,38 @@ class _SubscribePageState extends State<SubscribePage> {
                       duration: const Duration(milliseconds: 500),
                       margin: const EdgeInsets.symmetric(vertical: 10),
                       decoration: BoxDecoration(
-                        color: _selectedIndex == index
-                            ? Colors.yellow
-                            : Colors.white,
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(18),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(18.sp),
                         ),
-                        border: const Border(
-                          bottom: BorderSide(
-                            color: Colors.green,
-                          ),
-                          top: BorderSide(
-                            color: Colors.green,
-                          ),
-                          left: BorderSide(
-                            color: Colors.green,
-                          ),
-                          right: BorderSide(
-                            color: Colors.green,
-                          ),
-                        ),
+                        border: _selectedIndex == index
+                            ? const Border(
+                                bottom: BorderSide(
+                                  width: 3,
+                                  color: Colors.green,
+                                ),
+                                top: BorderSide(
+                                  width: 3,
+                                  color: Colors.green,
+                                ),
+                                left: BorderSide(
+                                  width: 3,
+                                  color: Colors.green,
+                                ),
+                                right: BorderSide(
+                                  width: 3,
+                                  color: Colors.green,
+                                ),
+                              )
+                            : null,
                       ),
                       child: ListTile(
                         onTap: () {},
                         contentPadding: const EdgeInsets.all(8),
-                        tileColor: Colors.white,
                         trailing: Text(packages[index]["price"]!),
                         title: Text(packages[index]["title"]!),
                         leading: Radio<OffSetOptions>(
+                          activeColor: Colors.green,
                           value: options[index],
                           groupValue: _option,
                           onChanged: (OffSetOptions? value) {
@@ -129,8 +135,23 @@ class _SubscribePageState extends State<SubscribePage> {
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 70.sp),
+              child: ElevatedButton(
+                style: const ButtonStyle(),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      builder: (context) => const PaymentPage(),
+                    ),
+                  );
+                },
+                child: const Text("Select"),
               ),
             ),
           ],

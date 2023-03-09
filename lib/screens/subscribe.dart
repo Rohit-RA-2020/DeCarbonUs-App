@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../constants/price_model.dart';
+
 class SubscribePage extends StatefulWidget {
   const SubscribePage({super.key});
 
@@ -10,38 +12,10 @@ class SubscribePage extends StatefulWidget {
   State<SubscribePage> createState() => _SubscribePageState();
 }
 
-var options = [
-  OffSetOptions.n100,
-  OffSetOptions.n120,
-  OffSetOptions.n200,
-  OffSetOptions.custom,
-];
-
-enum OffSetOptions { n100, n120, n200, custom }
-
 class _SubscribePageState extends State<SubscribePage> {
   OffSetOptions _option = OffSetOptions.n100;
 
   int _selectedIndex = 0;
-
-  var packages = [
-    {
-      "title": "100% of my footprint",
-      "price": "Rs 400/month",
-    },
-    {
-      "title": "120% of my footprint",
-      "price": "Rs 500/month",
-    },
-    {
-      "title": "200% of my footprint",
-      "price": "Rs 800/month",
-    },
-    {
-      "title": "Custom",
-      "price": "",
-    }
-  ];
 
   @override
   Widget build(BuildContext context) {

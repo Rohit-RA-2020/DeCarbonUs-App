@@ -1,16 +1,21 @@
+import 'package:decarbonus/constants/price_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PaymentPage extends StatefulWidget {
+import '../providers/provider.dart';
+
+class PaymentPage extends ConsumerStatefulWidget {
   const PaymentPage({super.key});
 
   @override
-  State<PaymentPage> createState() => _PaymentPageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _PaymentPageState();
 }
 
-class _PaymentPageState extends State<PaymentPage> {
+class _PaymentPageState extends ConsumerState<PaymentPage> {
   @override
   Widget build(BuildContext context) {
+    int index = ref.watch(subscriptionProvider);
     return Scaffold(
       body: Column(
         children: [
@@ -116,7 +121,7 @@ class _PaymentPageState extends State<PaymentPage> {
                       ),
                     ),
                     Text(
-                      "100%",
+                      packages[index]['coverage'].toString(),
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 25.sp,
@@ -162,7 +167,7 @@ class _PaymentPageState extends State<PaymentPage> {
                       ),
                     ),
                     Text(
-                      "Rs. 400",
+                      "Rs. ${packages[index]['amt']}",
                       style: TextStyle(
                         color: Colors.blue,
                         fontSize: 25.sp,

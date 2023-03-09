@@ -1,18 +1,20 @@
+import 'package:decarbonus/providers/provider.dart';
 import 'package:decarbonus/screens/payment.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constants/price_model.dart';
 
-class SubscribePage extends StatefulWidget {
+class SubscribePage extends ConsumerStatefulWidget {
   const SubscribePage({super.key});
 
   @override
-  State<SubscribePage> createState() => _SubscribePageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _SubscribePageState();
 }
 
-class _SubscribePageState extends State<SubscribePage> {
+class _SubscribePageState extends ConsumerState<SubscribePage> {
   OffSetOptions _option = OffSetOptions.n100;
 
   int _selectedIndex = 0;
@@ -92,10 +94,9 @@ class _SubscribePageState extends State<SubscribePage> {
                             : null,
                       ),
                       child: ListTile(
-                        onTap: () {},
                         contentPadding: const EdgeInsets.all(8),
-                        trailing: Text(packages[index]["price"]!),
-                        title: Text(packages[index]["title"]!),
+                        trailing: Text(packages[index]["price"]!.toString()),
+                        title: Text(packages[index]["title"]!.toString()),
                         leading: Radio<OffSetOptions>(
                           activeColor: Colors.green,
                           value: options[index],
@@ -104,6 +105,8 @@ class _SubscribePageState extends State<SubscribePage> {
                             setState(() {
                               _selectedIndex = index;
                               _option = value!;
+                              ref.read(subscriptionProvider.notifier).state =
+                                  index;
                             });
                           },
                         ),
@@ -113,10 +116,19 @@ class _SubscribePageState extends State<SubscribePage> {
                 ],
               ),
             ),
+            SizedBox(height: 20.h),
             Container(
+              height: 50.sp,
+              width: 110.sp,
               margin: EdgeInsets.symmetric(vertical: 10, horizontal: 70.sp),
               child: ElevatedButton(
-                style: const ButtonStyle(),
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(vertical: 10.sp),
+                  backgroundColor: Colors.green.shade100,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.sp),
+                  ),
+                ),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -125,7 +137,14 @@ class _SubscribePageState extends State<SubscribePage> {
                     ),
                   );
                 },
-                child: const Text("Select"),
+                child: const Text(
+                  "Select",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
           ],

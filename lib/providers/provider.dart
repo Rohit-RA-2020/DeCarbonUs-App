@@ -11,4 +11,6 @@ final footprintResultProvider =
 final connectionProvider = StateProvider((ref) => true);
 final statuscode = StateProvider((ref) => 0);
 
+final subscriptionProvider = StateProvider((ref) => 0);
+
 final blogsProvider = StateProvider<List<BlogsModel>>((ref) => []);

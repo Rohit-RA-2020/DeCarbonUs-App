@@ -1,6 +1,7 @@
 import 'package:decarbonus/constants/colors.dart';
 import 'package:decarbonus/screens/auth/login.dart';
 import 'package:decarbonus/screens/auth/signup.dart';
+import 'package:decarbonus/screens/teams_code.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -96,7 +97,12 @@ class _WelcomePageState extends State<WelcomePage> {
                       ),
                       TextButton(
                         onPressed: () {
-                          // Navigate to the team code page
+                          Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                              builder: (context) => const TeamsCode(),
+                            ),
+                          );
                         },
                         style: ButtonStyle(
                           splashFactory: NoSplash.splashFactory,

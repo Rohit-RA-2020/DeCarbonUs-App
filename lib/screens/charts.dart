@@ -61,7 +61,7 @@ class _ChartsPageState extends ConsumerState<ChartsPage> {
                       Text(
                         "${footprint['result']}",
                         style: TextStyle(
-                          fontSize: 55.sp,
+                          fontSize: 45.h,
                           color: Colors.white,
                           fontFamily: 'Andika',
                           fontWeight: FontWeight.w700,

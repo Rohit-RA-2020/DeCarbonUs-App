@@ -34,7 +34,7 @@ class _SubscribePageState extends ConsumerState<SubscribePage> {
               "Your actions to combat climate change are making a meaningful difference",
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 20.sp,
+                fontSize: 18.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -43,7 +43,7 @@ class _SubscribePageState extends ConsumerState<SubscribePage> {
             ),
             Container(
               padding: const EdgeInsets.all(15),
-              height: MediaQuery.of(context).size.height * 0.5.sp,
+              height: MediaQuery.of(context).size.height * 0.55.sp,
               decoration: BoxDecoration(
                 color: Colors.green.shade50,
                 borderRadius: BorderRadius.all(
@@ -66,7 +66,7 @@ class _SubscribePageState extends ConsumerState<SubscribePage> {
                     itemCount: 4,
                     itemBuilder: (contex, index) => AnimatedContainer(
                       duration: const Duration(milliseconds: 500),
-                      margin: const EdgeInsets.symmetric(vertical: 10),
+                      margin: const EdgeInsets.symmetric(vertical: 5),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(

@@ -19,16 +19,19 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
         backgroundColor: Colors.green.shade100,
         elevation: 1,
         actions: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                CupertinoPageRoute(
-                  builder: (context) => const SubscribePage(),
-                ),
-              );
-            },
-            child: const Text("Skip"),
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (context) => const SubscribePage(),
+                  ),
+                );
+              },
+              child: const Text("Skip"),
+            ),
           ),
         ],
       ),

@@ -51,11 +51,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "350949636849-2h7go1a6pnp4v89hf067impftpmt19d3.apps.googleusercontent.com",
+          "client_id": "350949636849-bh55g3ms4bctthmoa0u1v1d52rcbe39l.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.decarbonus",
-            "certificate_hash": "77c8befdc5b8f9449b3c9a827e6b5efc6e8cf077"
+            "certificate_hash": "aadcc9def001e939e03a7a677e25c16bc0825747"
           }
         },
         {

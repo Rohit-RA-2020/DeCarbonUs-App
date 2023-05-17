@@ -65,23 +65,23 @@ class _HomePageState extends ConsumerState<HomePage> {
                             yValueMapper: (ChartData data, _) => data.y)
                       ],
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Column(
-                          children: const [
+                          children: [
                             Text("data"),
                             Text("56"),
                           ],
                         ),
                         Column(
-                          children: const [
+                          children: [
                             Text("data"),
                             Text("56"),
                           ],
                         ),
                         Column(
-                          children: const [
+                          children: [
                             Text("data"),
                             Text("56"),
                           ],
@@ -133,11 +133,11 @@ class _HomePageState extends ConsumerState<HomePage> {
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                          builder: (context) => const ProjectsScreen(),
-                        ),
-                      );
+                    context,
+                    CupertinoPageRoute(
+                      builder: (context) => const ProjectsScreen(),
+                    ),
+                  );
                 },
                 child: Text(
                   "Start Off-setting",
